@@ -32,6 +32,7 @@
     cursor: none;
   }
 
+  /* CURSOR */
   .cursor {
     width: 10px; height: 10px;
     background: var(--accent); border-radius: 50%;
@@ -47,6 +48,7 @@
     transition: all 0.15s ease;
   }
 
+  /* NAV */
   nav {
     position: fixed; top: 0; width: 100%; z-index: 100;
     display: flex; align-items: center; justify-content: space-between;
@@ -73,6 +75,39 @@
   }
   .nav-links a:hover { color: var(--accent); }
 
+  /* HAMBURGER */
+  .nav-hamburger {
+    display: none; flex-direction: column; gap: 5px;
+    background: none; border: none; cursor: pointer; padding: 4px; z-index: 200;
+  }
+  .nav-hamburger span {
+    display: block; width: 24px; height: 2px;
+    background: var(--text); border-radius: 2px; transition: all 0.3s ease;
+  }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* MOBILE NAV DRAWER */
+  .nav-drawer {
+    display: none; position: fixed;
+    top: 0; left: 0; right: 0;
+    background: rgba(8,10,14,0.98);
+    backdrop-filter: blur(20px);
+    padding: 100px 32px 48px;
+    z-index: 150; border-bottom: 1px solid var(--border);
+    flex-direction: column; gap: 8px;
+  }
+  .nav-drawer.open { display: flex; }
+  .nav-drawer a {
+    font-size: 28px; font-weight: 800; color: var(--text-dim);
+    text-decoration: none; letter-spacing: -0.5px;
+    padding: 12px 0; border-bottom: 1px solid var(--border);
+    transition: color 0.2s;
+  }
+  .nav-drawer a:hover { color: var(--accent); }
+
+  /* HERO */
   .hero {
     min-height: 100vh;
     display: flex; flex-direction: column; justify-content: center;
@@ -150,6 +185,7 @@
   }
   @keyframes fadeUp { from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);} }
 
+  /* SECTIONS */
   section { padding: 100px 60px; }
   .section-tag {
     font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.2em;
@@ -163,6 +199,7 @@
   }
   .section-title em { font-style: italic; color: var(--accent); }
 
+  /* ABOUT */
   .about-strip {
     background: var(--bg2);
     border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
@@ -188,6 +225,7 @@
   }
   .tag:hover { border-color: var(--accent); color: var(--accent); }
 
+  /* MARQUEE */
   .marquee-section {
     padding: 32px 0; overflow: hidden;
     border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
@@ -203,7 +241,7 @@
   @keyframes marquee { from{transform:translateX(0);}to{transform:translateX(-50%);} }
 
   /* PROJECTS */
-  .projects-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; margin-top: 0; }
+  .projects-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
   .project-card {
     background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; overflow: hidden;
   }
@@ -212,7 +250,6 @@
   .project-card:nth-child(3) { grid-column: span 4; }
   .project-card:nth-child(4) { grid-column: span 4; }
   .project-card:nth-child(5) { grid-column: span 4; }
-
   .card-visual {
     height: 220px; position: relative; overflow: hidden;
     display: flex; align-items: center; justify-content: center;
@@ -229,7 +266,6 @@
     font-family: 'DM Mono', monospace; font-size: 10px; padding: 3px 8px; border-radius: 2px;
     background: var(--surface); color: var(--text-muted); border: 1px solid var(--border);
   }
-
   .v1 { background: linear-gradient(135deg, #0a0f1a 0%, #0d1f3a 100%); }
   .v2 { background: linear-gradient(135deg, #1a0a14 0%, #3a0d20 100%); }
   .v3 { background: linear-gradient(135deg, #0a1a0a 0%, #0d3a1a 100%); }
@@ -250,7 +286,7 @@
   .skill-bar { margin-top: 16px; height: 2px; background: var(--border); border-radius: 2px; overflow: hidden; }
   .skill-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent3)); border-radius: 2px; }
 
-  /* CTA */
+  /* CONTACT */
   .cta-section {
     background: var(--bg2); border-top: 1px solid var(--border);
     text-align: center; padding: 120px 60px; position: relative; overflow: hidden;
@@ -270,6 +306,7 @@
   .cta-title em { font-style: italic; color: var(--accent); }
   .cta-sub { font-size: 16px; color: var(--text-dim); max-width: 480px; margin: 0 auto 48px; line-height: 1.7; }
 
+  /* FOOTER */
   footer {
     background: var(--bg); border-top: 1px solid var(--border);
     padding: 48px 60px; display: flex; justify-content: space-between; align-items: center;
@@ -280,21 +317,88 @@
   .footer-links a:hover { color: var(--accent); }
   .footer-copy { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text-muted); }
 
+  /* REVEAL */
   .reveal { opacity: 0; transform: translateY(30px); transition: all 0.7s cubic-bezier(0.4,0,0.2,1); }
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
+  /* NOISE */
   body::after {
     content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 10000;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
     opacity: 0.02;
   }
 
+  /* SVG ANIMATIONS */
   .blink { animation: blink 2s steps(1) infinite; }
   @keyframes blink { 0%,100%{opacity:1;}50%{opacity:0;} }
   .spin-slow { animation: spin 8s linear infinite; transform-origin: center; }
   @keyframes spin { from{transform:rotate(0deg);}to{transform:rotate(360deg);} }
   .float { animation: float 4s ease-in-out infinite; }
   @keyframes float { 0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);} }
+
+  /* =====================
+     MOBILE RESPONSIVE
+     ===================== */
+  @media (max-width: 768px) {
+
+    /* Hide custom cursor on touch */
+    .cursor, .cursor-ring { display: none; }
+    body { cursor: auto; }
+
+    /* Nav */
+    nav { padding: 20px 24px; }
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+
+    /* Hero */
+    .hero { padding: 110px 24px 60px; min-height: 100svh; }
+    .hero-title { font-size: clamp(38px, 11vw, 60px); letter-spacing: -1.5px; }
+    .hero-sub { font-size: 15px; max-width: 100%; margin-top: 20px; }
+    .hero-actions { flex-direction: column; align-items: stretch; gap: 12px; margin-top: 32px; }
+    .btn-primary, .btn-ghost { justify-content: center; }
+    .hero-stats { flex-wrap: wrap; gap: 24px 36px; margin-top: 44px; padding-top: 28px; }
+    .stat-item .num { font-size: 26px; }
+
+    /* Marquee */
+    .marquee-item { font-size: 15px; }
+    .marquee-inner { gap: 40px; }
+
+    /* About */
+    .about-strip { flex-direction: column; align-items: flex-start; gap: 24px; padding: 40px 24px; }
+    .about-avatar { width: 84px; height: 84px; font-size: 30px; }
+    .about-text h2 { font-size: 22px; }
+    .about-text p { font-size: 14px; }
+
+    /* Sections */
+    section { padding: 60px 24px; }
+
+    /* Projects — full-width stack */
+    .projects-grid { display: flex; flex-direction: column; gap: 16px; }
+    .project-card:nth-child(n) { grid-column: unset; }
+    .card-visual { height: 180px; }
+    .card-title { font-size: 16px; }
+    .card-body { padding: 20px; }
+
+    /* Skills — 1 column */
+    .skills-grid { grid-template-columns: 1fr; margin-top: 36px; }
+    .skill-item { padding: 24px; }
+
+    /* Contact */
+    .cta-section { padding: 72px 24px; }
+    .cta-title { letter-spacing: -1px; }
+    .cta-sub { font-size: 14px; }
+
+    /* Footer */
+    footer { flex-direction: column; gap: 20px; text-align: center; padding: 36px 24px; }
+    .footer-links { flex-wrap: wrap; justify-content: center; gap: 16px; }
+  }
+
+  @media (max-width: 480px) {
+    .hero-title { font-size: clamp(32px, 10vw, 44px); }
+    .section-title { font-size: clamp(26px, 8vw, 38px); }
+    .cta-title { font-size: clamp(28px, 9vw, 44px); }
+    .hero-eyebrow { font-size: 10px; }
+  }
 </style>
 </head>
 <body>
@@ -302,6 +406,7 @@
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 
+<!-- NAV -->
 <nav>
   <div class="nav-logo">GSD <span></span></div>
   <ul class="nav-links">
@@ -309,8 +414,17 @@
     <li><a href="#skills">Skills</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-drawer" id="navDrawer">
+    <a href="#projects" onclick="closeMenu()">Projects</a>
+    <a href="#skills" onclick="closeMenu()">Skills</a>
+    <a href="#contact" onclick="closeMenu()">Contact</a>
+  </div>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
   <div class="hero-grid-bg"></div>
   <div class="hero-orb"></div>
@@ -336,6 +450,7 @@
   </div>
 </section>
 
+<!-- MARQUEE -->
 <div class="marquee-section">
   <div class="marquee-inner">
     <div class="marquee-item"><span class="marquee-dot"></span> Arduino</div>
@@ -361,6 +476,7 @@
   </div>
 </div>
 
+<!-- ABOUT -->
 <div class="about-strip reveal">
   <div class="about-avatar">🤖</div>
   <div class="about-text">
@@ -377,6 +493,7 @@
   </div>
 </div>
 
+<!-- PROJECTS -->
 <section id="projects">
   <div class="reveal" style="margin-bottom:60px;">
     <div class="section-tag">Featured Work</div>
@@ -407,10 +524,8 @@
         <div class="card-title">Obstacle-Avoiding Rover</div>
         <div class="card-desc">A 4WD robot that navigates spaces using ultrasonic sensors and IR arrays. Features real-time path correction and a custom PID motor controller.</div>
         <div class="card-tags">
-          <span class="card-tag">Arduino</span>
-          <span class="card-tag">C++</span>
-          <span class="card-tag">Ultrasonic</span>
-          <span class="card-tag">PID Control</span>
+          <span class="card-tag">Arduino</span><span class="card-tag">C++</span>
+          <span class="card-tag">Ultrasonic</span><span class="card-tag">PID Control</span>
         </div>
       </div>
     </div>
@@ -435,9 +550,7 @@
         <div class="card-title">3-DOF Robotic Arm</div>
         <div class="card-desc">A servo-driven arm. Picks, places, and stacks objects with millimeter precision.</div>
         <div class="card-tags">
-          <span class="card-tag">Servo</span>
-          <span class="card-tag">Inverse Kinematics</span>
-          <span class="card-tag">Python</span>
+          <span class="card-tag">Servo</span><span class="card-tag">Inverse Kinematics</span><span class="card-tag">Python</span>
         </div>
       </div>
     </div>
@@ -459,9 +572,7 @@
         <div class="card-title">PID Line Following Robot</div>
         <div class="card-desc">High-speed line follower using IR sensor array and PID tuning. Competed in national robotics events.</div>
         <div class="card-tags">
-          <span class="card-tag">PID</span>
-          <span class="card-tag">IR Sensors</span>
-          <span class="card-tag">Arduino</span>
+          <span class="card-tag">PID</span><span class="card-tag">IR Sensors</span><span class="card-tag">Arduino</span>
         </div>
       </div>
     </div>
@@ -486,9 +597,7 @@
         <div class="card-title">Face-Tracking Bot</div>
         <div class="card-desc">OpenCV-powered face detection system that controls a 2-axis servo turret to track faces in real time.</div>
         <div class="card-tags">
-          <span class="card-tag">OpenCV</span>
-          <span class="card-tag">Raspberry Pi</span>
-          <span class="card-tag">Python</span>
+          <span class="card-tag">OpenCV</span><span class="card-tag">Raspberry Pi</span><span class="card-tag">Python</span>
         </div>
       </div>
     </div>
@@ -511,9 +620,7 @@
         <div class="card-title">Gnanus 1.1 — Custom Code LLM</div>
         <div class="card-desc">A from-scratch neural network LLM trained to write, fix, and explain code. Built with PyTorch, no base model used.</div>
         <div class="card-tags">
-          <span class="card-tag">PyTorch</span>
-          <span class="card-tag">LLM</span>
-          <span class="card-tag">Python</span>
+          <span class="card-tag">PyTorch</span><span class="card-tag">LLM</span><span class="card-tag">Python</span>
         </div>
       </div>
     </div>
@@ -521,6 +628,7 @@
   </div>
 </section>
 
+<!-- SKILLS -->
 <section id="skills" class="skills-section">
   <div class="reveal">
     <div class="section-tag">What I Work With</div>
@@ -566,6 +674,7 @@
   </div>
 </section>
 
+<!-- CONTACT -->
 <section id="contact" class="cta-section">
   <div class="cta-bg"></div>
   <div style="position:relative; z-index:1;">
@@ -586,6 +695,7 @@
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
   <div class="footer-logo">Gnana Sai Deep<span style="color:var(--accent)">.</span></div>
   <ul class="footer-links">
@@ -597,6 +707,19 @@
 </footer>
 
 <script>
+  // Hamburger menu
+  const hamburger = document.getElementById('hamburger');
+  const navDrawer = document.getElementById('navDrawer');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    navDrawer.classList.toggle('open');
+  });
+  function closeMenu() {
+    hamburger.classList.remove('open');
+    navDrawer.classList.remove('open');
+  }
+
+  // Custom cursor (desktop only)
   const cursor = document.getElementById('cursor');
   const ring = document.getElementById('cursorRing');
   let mx = 0, my = 0, rx = 0, ry = 0;
@@ -615,6 +738,8 @@
     el.addEventListener('mouseenter', () => { ring.style.transform = 'scale(1.5)'; ring.style.borderColor = 'rgba(0,229,255,0.8)'; });
     el.addEventListener('mouseleave', () => { ring.style.transform = 'scale(1)'; ring.style.borderColor = 'rgba(0,229,255,0.5)'; });
   });
+
+  // Scroll reveal
   const observer = new IntersectionObserver(entries => {
     entries.forEach((e, i) => {
       if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 80);
